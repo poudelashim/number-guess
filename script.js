@@ -4,8 +4,6 @@ const secretNumber = Math.trunc(Math.random() * 20) + 1;
 //sate variable//
 let score = 20;
 
-document.querySelector('.number').textContent = secretNumber;
-
 //game logic
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
@@ -17,6 +15,7 @@ document.querySelector('.check').addEventListener('click', function () {
     //when player wins the game
     document.querySelector('.message').textContent =
       '🥳 Well done,  Correct Number';
+    document.querySelector('.number').textContent = secretNumber;
     document.querySelector('body').style.background = '#60b347';
 
     //when player inputs high number
@@ -40,4 +39,18 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.score').textContent = 0;
     }
   }
+});
+
+//reset the game
+
+document.querySelector('.again').addEventListener('click', function () {
+  score = 20;
+  const secretNumber = Math.trunc(Math.random() * 20) + 1;
+
+  document.querySelector('.message').textContent = 'Start guessing...';
+  document.querySelector('.score').textContent = score;
+  document.querySelector('.number').textContent = '?';
+  document.querySelector('.guess').value = '';
+  document.querySelector('body').style.background =
+    'linear-gradient(to right, rgb(123, 123, 202), rgb(221, 138, 138))';
 });
