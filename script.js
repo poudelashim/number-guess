@@ -3,6 +3,7 @@ const secretNumber = Math.trunc(Math.random() * 20) + 1;
 
 //sate variable//
 let score = 20;
+let highscore = 0;
 
 //game logic
 document.querySelector('.check').addEventListener('click', function () {
@@ -17,6 +18,11 @@ document.querySelector('.check').addEventListener('click', function () {
       '🥳 Well done,  Correct Number';
     document.querySelector('.number').textContent = secretNumber;
     document.querySelector('body').style.background = '#60b347';
+
+    if (score > highscore) {
+      highscore = score;
+      document.querySelector('.highscore').textContent = highscore;
+    }
 
     //when player inputs high number
   } else if (guess > secretNumber) {
